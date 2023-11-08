@@ -78,10 +78,10 @@ def _handle_divide(stack: list[float]) -> float:
     return b / a
 
 
-def _handle_max(stack: list[float]) -> float:    
+def _handle_max(stack: list[float]) -> float:
     try:
-        a = stack.pop()
-        b = stack.pop()
+        max_val = max(stack)
+        stack.clear()
+        return max_val
     except IndexError:
         raise ValueError("Expected at least 2 operands but found 1")
-    return max(a, b)

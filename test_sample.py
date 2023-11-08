@@ -49,23 +49,22 @@ class TestUnit:
         assert rpn_reader("-0.5 -5 +") == -5.5
 
     def test_max_value(self):
-        res = rpn_reader("2 3 max")
-        assert res == 3
+        assert rpn_reader("2 3 max") == 3
         assert rpn_reader("-0.5 -5 max") == -0.5
         assert rpn_reader("-15 15 max") == 15
 
     def test_multiple_operators(self):
         res = rpn_reader("2 3 max 4 +")
         assert res == 7
-        
+
     def test_sqrt(self):
         res = rpn_reader("4 sqrt")
         assert res == 2
-            
+
     def test_multiple_operators_with_two_operands(self):
-            res = rpn_reader("4 1 / 9 2 / +")
-            assert res == 8.5
-        
+        res = rpn_reader("4 1 / 9 2 / +")
+        assert res == 8.5
+
     def test_inrpn_reader(self):
         try:
             rpn_reader("9 2 - / 3 *")
