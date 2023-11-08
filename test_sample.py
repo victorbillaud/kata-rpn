@@ -57,6 +57,10 @@ class TestUnit:
     def test_multiple_operators(self):
         res = rpn_reader("2 3 max 4 +")
         assert res == 7
+        
+    def test_sqrt(self):
+        res = rpn_reader("4 sqrt")
+        assert res == 2
             
     def test_multiple_operators_with_two_operands(self):
             res = rpn_reader("4 1 / 9 2 / +")
