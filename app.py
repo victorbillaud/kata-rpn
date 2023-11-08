@@ -51,8 +51,8 @@ def _handle_sqrt(stack: list[int]) -> int:
         a = stack.pop()
 
         return math.sqrt(a)
-    except IndexError:
-        raise ValueError("Invalid RPN expression")
+    except Exception as e:
+        raise Exception("Invalid RPN expression", e)
 
 
 def _handle_multiply(stack: list[int]) -> int:

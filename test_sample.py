@@ -13,6 +13,13 @@ class TestUnit:
         except Exception:
             assert True
 
+    def test_sqrt_with_negative(self):
+        try:
+            rpn_reader("-2 sqrt")
+            assert False
+        except Exception:
+            assert True
+
     def test_substract(self):
         res = rpn_reader("4 2 -")
         assert res == 2
