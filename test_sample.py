@@ -62,4 +62,14 @@ class TestUnit:
             assert False
         except Exception:
             assert True
-
+            
+    def test_multiple_operators_with_two_operands(self):
+            res = rpn_reader("4 1 / 9 2 / +")
+            assert res == 8.5
+        
+    def test_inrpn_reader(self):
+        try:
+            rpn_reader("9 2 - / 3 *")
+            assert False
+        except Exception:
+            assert True
