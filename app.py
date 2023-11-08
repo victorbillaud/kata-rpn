@@ -80,6 +80,9 @@ def _handle_divide(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
+        
+        if a or b == 0:
+            raise ValueError("Cannot divide by 0")
 
         return b / a
     except IndexError:

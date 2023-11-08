@@ -55,4 +55,11 @@ class TestUnit:
     def test_multiple_operators(self):
         res = rpn_reader("2 3 max 4 +")
         assert res == 7
+    
+    def test_divide_by_0(self):
+        try:
+            rpn_reader("2 0 /")
+            assert False
+        except Exception:
+            assert True
 
