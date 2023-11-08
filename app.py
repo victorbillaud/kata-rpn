@@ -86,7 +86,7 @@ def _handle_divide(stack: list[float]) -> float:
     except IndexError:
         raise ValueError("Invalid RPN expression")
     if a == 0:
-        raise ValueError("Cannot divide by 0")
+        raise ZeroDivisionError("Cannot divide by 0")
     return b / a
 
 
