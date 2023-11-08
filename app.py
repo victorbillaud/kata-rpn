@@ -1,3 +1,4 @@
+import math
 str = "20 2 +"
 
 
@@ -15,6 +16,9 @@ def rpn_reader(expression: str) -> int:
             a = stack.pop()
             b = stack.pop()
             stack.append(b - a)
+        elif item == "sqrt":
+            a = stack.pop()
+            stack.append(math.sqrt(a))
         else:
             stack.append(int(item))
 
