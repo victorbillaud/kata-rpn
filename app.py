@@ -2,7 +2,7 @@ str = "20 2 +"
 
 
 def rpn_reader(expression: str) -> int:
-    items = str.split(" ")
+    items = expression.split(" ")
 
     stack = []
 
