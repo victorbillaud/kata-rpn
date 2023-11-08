@@ -9,3 +9,7 @@ class TestUnit:
     def test_substract(self):
         res = rpn_reader("4 2 -")
         assert res == 2
+
+    def test_mult(self):
+        res = rpn_reader("4 2 *")
+        assert res == 8
