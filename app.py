@@ -1,7 +1,5 @@
 import math
 
-str = "20 2 +"
-
 
 def rpn_reader(expression: str) -> float:
     items = expression.split(" ")
