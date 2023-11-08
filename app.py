@@ -19,6 +19,14 @@ def rpn_reader(expression: str) -> int:
         elif item == "sqrt":
             a = stack.pop()
             stack.append(math.sqrt(a))
+        elif item == "*":
+            a = stack.pop()
+            b = stack.pop()
+            stack.append(b * a)
+        elif item == "/":
+            a = stack.pop()
+            b = stack.pop()
+            stack.append(b / a)
         else:
             stack.append(int(item))
 
