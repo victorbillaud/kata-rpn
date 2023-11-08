@@ -8,9 +8,9 @@ def valid_rpn(expression):
                                             #we're going to check according to the divided expression if we can figure out an operator
     for token in tokens:
         if token not in operators:
-            my_stack.append(token)     #append a token to the string variables
+            my_stack.append(token)          #append a token to the string variables
         else:
-            if len(my_stack) < 2:      #length of the stack cannot be inferior to 2 else it is impossible to make an operation.
+            if len(my_stack) < 2:           #length of the stack cannot be inferior to 2 else it is impossible to make an operation.
                 return False
             my_stack.pop()
             my_stack.pop()
@@ -18,7 +18,7 @@ def valid_rpn(expression):
 
     return len(my_stack) == 1
 
-class TestRPNValid(unittest.TestCase):  #class that is going to explore the different unit tests that comes through our mind to make sure they're valid or invalid RPNs
+class TestRPNValid(unittest.TestCase):      #class that is going to explore the different unit tests that comes through our mind to make sure they're valid or invalid RPNs
     def test_valid_rpn(self):
         self.assertTrue(valid_rpn("4 1 / 9 2 / +"))
         self.assertTrue(valid_rpn("4 7 +"))
@@ -28,6 +28,8 @@ class TestRPNValid(unittest.TestCase):  #class that is going to explore the diff
         self.assertFalse(valid_rpn("9 2 - / 3 *"))
         self.assertFalse(valid_rpn("6 +"))
         self.assertFalse(valid_rpn("2 3 * /"))
+        self.assertFalse(valid_rpn("+"))
+        self.assertFalse(valid_rpn("2 4 7"))
 
 if __name__ == '__main__':
     unittest.main()
