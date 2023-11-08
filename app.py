@@ -14,6 +14,7 @@ def rpn_reader(expression: str) -> float:
         "sqrt": _handle_sqrt,
         "*": _handle_multiply,
         "/": _handle_divide,
+        "max": _handle_max,
     }
 
     for item in items:
@@ -71,5 +72,14 @@ def _handle_divide(stack: list[float]) -> float:
         b = stack.pop()
 
         return b / a
+    except IndexError:
+        raise ValueError("Invalid RPN expression")
+    
+def _handle_max(stack: list[float]) -> float:
+    try:
+        a = stack.pop()
+        b = stack.pop()
+
+        return max(a,b)
     except IndexError:
         raise ValueError("Invalid RPN expression")

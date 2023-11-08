@@ -24,3 +24,7 @@ class TestUnit:
     def test_sum_float_value(self):
         res = rpn_reader("4.5 3.5 +")
         assert res == 8
+    
+    def test_max_value(self):
+        res = rpn_reader("2 3 max")
+        assert res == 3
