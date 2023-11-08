@@ -32,7 +32,7 @@ class TestUnit:
         assert rpn_reader("-10 -10 -") == 0
         assert rpn_reader("10 -5 -") == 15
 
-    def test_mult(self):
+    def test_product(self):
         res = rpn_reader("4 2 *")
         assert res == 8
         assert rpn_reader("5 0 *") == 0
