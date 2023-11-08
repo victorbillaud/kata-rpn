@@ -49,7 +49,10 @@ class TestUnit:
     def test_max_value(self):
         res = rpn_reader("2 3 max")
         assert res == 3
+        assert rpn_reader("-0.5 -5 max") == -0.5
+        assert rpn_reader("-15 15 max") == 15
     
     def test_multiple_operators(self):
         res = rpn_reader("2 3 max 4 +")
         assert res == 7
+
