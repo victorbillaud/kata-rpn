@@ -28,6 +28,8 @@ def rpn_reader(expression: str) -> float:
 
 
 def _handle_sum(stack: list[float]) -> float:
+    if len(stack) < 2:
+        raise ValueError("Expected at least 2 operands, got less")
     try:
         a = stack.pop()
         b = stack.pop()
@@ -38,6 +40,8 @@ def _handle_sum(stack: list[float]) -> float:
 
 
 def _handle_substract(stack: list[float]) -> float:
+    if len(stack) < 2:
+        raise ValueError("Expected at least 2 operands, got less")
     try:
         a = stack.pop()
         b = stack.pop()
@@ -48,6 +52,8 @@ def _handle_substract(stack: list[float]) -> float:
 
 
 def _handle_sqrt(stack: list[float]) -> float:
+    if len(stack) < 1:
+        raise ValueError("Expected at least 1 operands, got less")
     try:
         a = stack.pop()
 
@@ -57,6 +63,8 @@ def _handle_sqrt(stack: list[float]) -> float:
 
 
 def _handle_multiply(stack: list[float]) -> float:
+    if len(stack) < 2:
+        raise ValueError("Expected at least 2 operands, got less")
     try:
         a = stack.pop()
         b = stack.pop()
@@ -67,6 +75,8 @@ def _handle_multiply(stack: list[float]) -> float:
 
 
 def _handle_divide(stack: list[float]) -> float:
+    if len(stack) < 2:
+        raise ValueError("Expected at least 2 operands, got less")
     try:
         a = stack.pop()
         b = stack.pop()
@@ -76,6 +86,8 @@ def _handle_divide(stack: list[float]) -> float:
         raise ValueError("Invalid RPN expression")
     
 def _handle_max(stack: list[float]) -> float:
+    if len(stack) < 2:
+        raise ValueError("Expected at least 2 operands, got less")
     try:
         a = stack.pop()
         b = stack.pop()
