@@ -15,6 +15,14 @@ def rpn_reader(expression: str) -> int:
             a = stack.pop()
             b = stack.pop()
             stack.append(b - a)
+        elif item == "*":
+            a = stack.pop()
+            b = stack.pop()
+            stack.append(b * a)
+        elif item == "/":
+            a = stack.pop()
+            b = stack.pop()
+            stack.append(b / a)
         else:
             stack.append(int(item))
 
