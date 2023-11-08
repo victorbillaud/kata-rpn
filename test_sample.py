@@ -20,3 +20,7 @@ class TestUnit:
     def test_mult(self):
         res = rpn_reader("4 2 *")
         assert res == 8
+        
+    def test_sum_float_value(self):
+        res = rpn_reader("4.5 3.5 +")
+        assert res == 8

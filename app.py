@@ -3,7 +3,7 @@ import math
 str = "20 2 +"
 
 
-def rpn_reader(expression: str) -> int:
+def rpn_reader(expression: str) -> float:
     items = expression.split(" ")
 
     stack = []
@@ -21,12 +21,12 @@ def rpn_reader(expression: str) -> int:
             stack.append(operators[item](stack))
 
         else:
-            stack.append(int(item))
+            stack.append(float(item))
 
     return stack.pop()
 
 
-def _handle_sum(stack: list[int]) -> int:
+def _handle_sum(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
@@ -36,7 +36,7 @@ def _handle_sum(stack: list[int]) -> int:
         raise ValueError("Expected at least 2 operands, got 1", a)
 
 
-def _handle_substract(stack: list[int]) -> int:
+def _handle_substract(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
@@ -46,7 +46,7 @@ def _handle_substract(stack: list[int]) -> int:
         raise ValueError("Invalid RPN expression")
 
 
-def _handle_sqrt(stack: list[int]) -> int:
+def _handle_sqrt(stack: list[float]) -> float:
     try:
         a = stack.pop()
 
@@ -55,7 +55,7 @@ def _handle_sqrt(stack: list[int]) -> int:
         raise ValueError("Invalid RPN expression")
 
 
-def _handle_multiply(stack: list[int]) -> int:
+def _handle_multiply(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
@@ -65,7 +65,7 @@ def _handle_multiply(stack: list[int]) -> int:
         raise ValueError("Invalid RPN expression")
 
 
-def _handle_divide(stack: list[int]) -> int:
+def _handle_divide(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
