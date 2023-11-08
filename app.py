@@ -23,36 +23,53 @@ def rpn_reader(expression: str) -> int:
         else:
             stack.append(int(item))
 
+    return stack.pop()
+
 
 def _handle_sum(stack: list[int]) -> int:
-    a = stack.pop()
-    b = stack.pop()
+    try:
+        a = stack.pop()
+        b = stack.pop()
 
-    return b + a
+        return b + a
+    except IndexError:
+        raise ValueError("Invalid RPN expression")
 
 
 def _handle_substract(stack: list[int]) -> int:
-    a = stack.pop()
-    b = stack.pop()
+    try:
+        a = stack.pop()
+        b = stack.pop()
 
-    return b - a
+        return b - a
+    except IndexError:
+        raise ValueError("Invalid RPN expression")
 
 
 def _handle_sqrt(stack: list[int]) -> int:
-    a = stack.pop()
+    try:
+        a = stack.pop()
 
-    return math.sqrt(a)
+        return math.sqrt(a)
+    except IndexError:
+        raise ValueError("Invalid RPN expression")
 
 
 def _handle_multiply(stack: list[int]) -> int:
-    a = stack.pop()
-    b = stack.pop()
+    try:
+        a = stack.pop()
+        b = stack.pop()
 
-    return b * a
+        return b * a
+    except IndexError:
+        raise ValueError("Invalid RPN expression")
 
 
 def _handle_divide(stack: list[int]) -> int:
-    a = stack.pop()
-    b = stack.pop()
+    try:
+        a = stack.pop()
+        b = stack.pop()
 
-    return b / a
+        return b / a
+    except IndexError:
+        raise ValueError("Invalid RPN expression")
