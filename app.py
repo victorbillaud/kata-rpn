@@ -33,7 +33,7 @@ def _handle_sum(stack: list[int]) -> int:
 
         return b + a
     except IndexError:
-        raise ValueError("Invalid RPN expression")
+        raise ValueError("Expected at least 2 operands, got 1", a)
 
 
 def _handle_substract(stack: list[int]) -> int:

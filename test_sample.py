@@ -6,6 +6,13 @@ class TestUnit:
         res = rpn_reader("20 3 +")
         assert res == 23
 
+    def test_sum_with_one_operand(self):
+        try:
+            rpn_reader("20 +")
+            assert False
+        except Exception:
+            assert True
+
     def test_substract(self):
         res = rpn_reader("4 2 -")
         assert res == 2
