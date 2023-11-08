@@ -20,9 +20,14 @@ def rpn_reader(expression: str) -> float:
     for item in items:
         if item in operators:
             stack.append(operators[item](stack))
-
         else:
-            stack.append(float(item))
+            try:
+                stack.append(float(item))
+            except ValueError:
+                raise ValueError(f"Invalid operand: {item}")
+
+    if len(stack) != 1:
+        raise ValueError("Invalid RPN expression")
 
     return stack.pop()
 
@@ -33,10 +38,9 @@ def _handle_sum(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
-
-        return b + a
     except IndexError:
-        raise ValueError("Expected at least 2 operands, got 1", a)
+        raise ValueError("Expected at least 2 operands, got 1")
+    return b + a
 
 
 def _handle_substract(stack: list[float]) -> float:
@@ -45,21 +49,21 @@ def _handle_substract(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
-
-        return b - a
     except IndexError:
         raise ValueError("Invalid RPN expression")
+    return b - a
 
 
 def _handle_sqrt(stack: list[float]) -> float:
     if len(stack) < 1:
-        raise ValueError("Expected at least 1 operands, got less")
+        raise ValueError("Expected at least 1 operand, got less")
     try:
         a = stack.pop()
-
-        return math.sqrt(a)
-    except Exception as e:
-        raise Exception("Invalid RPN expression", e)
+    except IndexError:
+        raise ValueError("Invalid RPN expression")
+    if a < 0:
+        raise ValueError("Cannot take the square root of a negative number")
+    return math.sqrt(a)
 
 
 def _handle_multiply(stack: list[float]) -> float:
@@ -68,10 +72,9 @@ def _handle_multiply(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
-
-        return b * a
     except IndexError:
         raise ValueError("Invalid RPN expression")
+    return b * a
 
 
 def _handle_divide(stack: list[float]) -> float:
@@ -80,21 +83,19 @@ def _handle_divide(stack: list[float]) -> float:
     try:
         a = stack.pop()
         b = stack.pop()
-        
-        if a or b == 0:
-            raise ValueError("Cannot divide by 0")
-
-        return b / a
     except IndexError:
         raise ValueError("Invalid RPN expression")
-    
+    if a == 0:
+        raise ValueError("Cannot divide by 0")
+    return b / a
+
+
 def _handle_max(stack: list[float]) -> float:
     if len(stack) < 2:
         raise ValueError("Expected at least 2 operands, got less")
     try:
         a = stack.pop()
         b = stack.pop()
-
-        return max(a,b)
     except IndexError:
         raise ValueError("Invalid RPN expression")
+    return max(a, b)

@@ -58,7 +58,7 @@ class TestUnit:
     
     def test_divide_by_0(self):
         try:
-            rpn_reader("2 0 /")
+            rpn_reader("0 2 /")
             assert False
         except Exception:
             assert True
